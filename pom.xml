@@ -122,11 +122,12 @@
                             <apiPackage>com.example.api</apiPackage>
                             <configOptions>
                                 <documentationProvider>none</documentationProvider>
-                                <interfaceOnly>true</interfaceOnly> <!-- Only generate interfaces -->
-                                <useSpringBoot3>true</useSpringBoot3> <!-- For Spring Boot 3 -->
+                                <interfaceOnly>true</interfaceOnly>
+                                <useSpringBoot3>true</useSpringBoot3>
                                 <dateLibrary>java8</dateLibrary>
-                                <useTags>true</useTags> <!-- Separate controllers per tag -->
+                                <useTags>true</useTags>
                                 <generateMain>true</generateMain>
+                                <enumPropertyNaming>UPPERCASE</enumPropertyNaming>
                             </configOptions>
                         </configuration>
                     </execution>

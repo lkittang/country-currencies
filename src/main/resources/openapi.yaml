@@ -31,17 +31,22 @@ components:
       name: sortBy
       in: query
       schema:
-        type: string
-        enum:
-          - country
-          - currency
-        default: country
+        $ref: '#/components/schemas/sortBy'
     orderBy:
       name: orderBy
       in: query
       schema:
-        type: string
-        enum:
-          - ascending
-          - descending
-        default: ascending
+        $ref: '#/components/schemas/orderBy'
+  schemas:
+    sortBy:
+      type: string
+      enum:
+        - country
+        - currency
+      default: country
+    orderBy:
+      type: string
+      enum:
+        - ascending
+        - descending
+      default: ascending

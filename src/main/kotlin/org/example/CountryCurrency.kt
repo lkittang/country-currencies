@@ -1,7 +1,9 @@
 package org.example
 
 import com.fasterxml.jackson.databind.node.ArrayNode
+import org.springframework.stereotype.Component
 
+@Component
 class CountryCurrency {
 
     fun getCountriesWithCurrencies(countries: ArrayNode): Map<String, String> {
