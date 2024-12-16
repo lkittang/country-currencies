@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 class Currencies {
 
     fun currenciesWithCountries(countries: Map<String, String?>): Map<String, List<String>> {
-        val countriesWithCurrency = countries.filterValues { it != null } as Map<String, String>
+        val countriesWithCurrency = countries.filterValues { it != null }.mapValues { it.value!! }
         return countriesWithCurrency.entries.groupBy({it.value}, {it.key})
     }
 
