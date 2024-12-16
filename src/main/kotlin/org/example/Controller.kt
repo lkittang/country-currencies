@@ -18,6 +18,6 @@ open class Controller(
     }
 
     override fun currenciesWorldGet(): ResponseEntity<Any> {
-        TODO("To be implemented")
+        return ResponseEntity.ok(worldCurrencies.getWorldCurrenciesWithCountriesUsed())
     }
 }

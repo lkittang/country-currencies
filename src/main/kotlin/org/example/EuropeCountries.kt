@@ -12,7 +12,7 @@ class EuropeCountries(
     @Autowired private val countrySorter: CountrySorter
 ) {
 
-    fun getEuropeanCountriesWithCurrencies(sortBy: SortBy, orderBy: OrderBy): Map<String, String> {
+    fun getEuropeanCountriesWithCurrencies(sortBy: SortBy, orderBy: OrderBy): Map<String, String?> {
         val countries = client.getCountriesInEurope()
         val countriesWithCurrencies = countryCurrency.getCountriesWithCurrencies(countries)
         return countrySorter.sortCountries(countriesWithCurrencies, sortBy, orderBy)

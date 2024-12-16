@@ -1,9 +1,7 @@
 package org.example
 
-import org.example.CountrySorter.Order.ASCENDING
-import org.example.CountrySorter.Order.DESCENDING
-import org.example.CountrySorter.SortBy.COUNTRY
-import org.example.CountrySorter.SortBy.CURRENCY
+import com.example.api.model.OrderBy
+import com.example.api.model.SortBy
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -14,7 +12,7 @@ class CountrySorterTest {
     @Test
     fun testSortByCountryAscending() {
         // when
-        val sorted = countrySorter.sortCountries(countryCurrencyMap, COUNTRY, ASCENDING)
+        val sorted = countrySorter.sortCountries(countryCurrencyMap, SortBy.COUNTRY, OrderBy.ASCENDING)
         // then
         Assertions.assertEquals(FINLAND, sorted.toList().get(0).first)
         Assertions.assertEquals(NORWAY, sorted.toList().get(1).first)
@@ -24,7 +22,7 @@ class CountrySorterTest {
     @Test
     fun testSortByCountryDescending() {
         // when
-        val sorted = countrySorter.sortCountries(countryCurrencyMap, COUNTRY, DESCENDING)
+        val sorted = countrySorter.sortCountries(countryCurrencyMap, SortBy.COUNTRY, OrderBy.DESCENDING)
         // then
         Assertions.assertEquals(UNITED_KINGDOWM, sorted.toList().get(0).first)
         Assertions.assertEquals(NORWAY, sorted.toList().get(1).first)
@@ -34,7 +32,7 @@ class CountrySorterTest {
     @Test
     fun testSortByCurrencyAscending() {
         // when
-        val sorted = countrySorter.sortCountries(countryCurrencyMap, CURRENCY, ASCENDING)
+        val sorted = countrySorter.sortCountries(countryCurrencyMap, SortBy.CURRENCY, OrderBy.ASCENDING)
         // then
         Assertions.assertEquals(FINLAND, sorted.toList().get(0).first)
         Assertions.assertEquals(UNITED_KINGDOWM, sorted.toList().get(1).first)
@@ -44,7 +42,7 @@ class CountrySorterTest {
     @Test
     fun testSortByCurrencyDescending() {
         // when
-        val sorted = countrySorter.sortCountries(countryCurrencyMap, CURRENCY, DESCENDING)
+        val sorted = countrySorter.sortCountries(countryCurrencyMap, SortBy.CURRENCY, OrderBy.DESCENDING)
         // then
         Assertions.assertEquals(NORWAY, sorted.toList().get(0).first)
         Assertions.assertEquals(UNITED_KINGDOWM, sorted.toList().get(1).first)
