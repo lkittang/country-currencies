@@ -100,7 +100,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>org.example.Application</mainClass> <!-- Main class for Kotlin -->
+                    <mainClass>org.example.ApplicationKt</mainClass>
                 </configuration>
             </plugin>
             <plugin>
