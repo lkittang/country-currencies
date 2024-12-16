@@ -1,23 +1,24 @@
-package org.example
+package kotlin.org.example.restcountries
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.node.TextNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import org.example.restcountries.RestCountriesMapper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-class CountryCurrencyTest {
+class RestCountriesMapperTest {
 
-    private val countryCurrency = CountryCurrency()
+    private val restCountriesMapper = RestCountriesMapper()
 
     @Test
     fun tesGetCountriesWithCurrencies() {
         // given
         val clientResponse = readSampleResponse()
         // when
-        val countriesWithCurrencies = countryCurrency.getCountriesWithCurrencies(clientResponse)
+        val countriesWithCurrencies = restCountriesMapper.getCountriesWithCurrencies(clientResponse)
         // then
         assertContainsCountryAndCurrency(countriesWithCurrencies, "Norway", "NOK")
         assertContainsCountryAndCurrency(countriesWithCurrencies, "Greece", "EUR")
@@ -34,7 +35,7 @@ class CountryCurrencyTest {
         noCurrencyCountryObject.set("currencies", jacksonObjectMapper().createObjectNode()) as ObjectNode
         val countries = jacksonObjectMapper().createArrayNode().add(noCurrencyCountryObject)
         // when
-        val result = countryCurrency.getCountriesWithCurrencies(countries)
+        val result = restCountriesMapper.getCountriesWithCurrencies(countries)
         // then
         Assertions.assertTrue(result.containsKey(noCurrencyCountry))
         Assertions.assertTrue(result.get(noCurrencyCountry) == null)
@@ -50,7 +51,7 @@ class CountryCurrencyTest {
 
     companion object {
         fun readSampleResponse(): ArrayNode {
-            val resourceAsStream = CountryCurrencyTest::class.java.classLoader.getResourceAsStream("sample-countries.json")
+            val resourceAsStream = RestCountriesMapperTest::class.java.classLoader.getResourceAsStream("sample-countries.json")
             return ObjectMapper().readTree(resourceAsStream) as ArrayNode
         }
     }

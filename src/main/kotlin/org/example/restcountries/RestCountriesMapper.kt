@@ -1,10 +1,10 @@
-package org.example
+package org.example.restcountries
 
 import com.fasterxml.jackson.databind.node.ArrayNode
 import org.springframework.stereotype.Component
 
 @Component
-class CountryCurrency {
+class RestCountriesMapper {
 
     fun getCountriesWithCurrencies(countries: ArrayNode): Map<String, String?> {
         return countries

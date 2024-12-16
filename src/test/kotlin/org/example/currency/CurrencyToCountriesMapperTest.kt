@@ -1,17 +1,19 @@
-package org.example
+package kotlin.org.example.currency
 
+import org.example.*
+import org.example.currency.CurrencyToCountriesMapper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-class CurrenciesTest {
+class CurrencyToCountriesMapperTest {
 
-    private val currencies = Currencies()
+    private val currencyToCountriesMapper = CurrencyToCountriesMapper()
     private val countryCurrencyMap = mapOf(Pair(NORWAY, NOK), Pair(FINLAND, EUR), Pair(FRANCE, EUR))
 
     @Test
     fun testMapCurrenciesToCountries() {
         // when
-        val currenciesWithCountries = currencies.currenciesWithCountries(countryCurrencyMap)
+        val currenciesWithCountries = currencyToCountriesMapper.currenciesWithCountries(countryCurrencyMap)
         // then
         Assertions.assertTrue(currenciesWithCountries.containsKey(NOK))
         currenciesWithCountries[NOK]?.let {

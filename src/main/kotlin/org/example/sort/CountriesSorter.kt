@@ -1,11 +1,11 @@
-package org.example
+package org.example.sort
 
 import com.example.api.model.OrderBy
 import com.example.api.model.SortBy
 import org.springframework.stereotype.Component
 
 @Component
-class CountrySorter {
+class CountriesSorter {
 
     fun sortCountries(countries: Map<String, String?>, sortBy: SortBy, order: OrderBy): Map<String, String?> {
         val sortByMethod = when (sortBy) {

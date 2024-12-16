@@ -1,4 +1,4 @@
-package org.example
+package org.example.restcountries
 
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
