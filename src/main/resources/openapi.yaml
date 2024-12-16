@@ -1,0 +1,47 @@
+openapi: '3.0.2'
+info:
+  title: 'Country-Currencies'
+  version: '1.0.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /countries/europe:
+    get:
+      parameters:
+        - $ref: '#/components/parameters/sortBy'
+        - $ref: '#/components/parameters/orderBy'
+      responses:
+        '200':
+          $ref: '#/components/responses/general'
+  /currencies/world:
+    get:
+      responses:
+        '200':
+          $ref: '#/components/responses/general'
+components:
+  responses:
+    general:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+  parameters:
+    sortBy:
+      name: sortBy
+      in: query
+      schema:
+        type: string
+        enum:
+          - country
+          - currency
+        default: country
+    orderBy:
+      name: orderBy
+      in: query
+      schema:
+        type: string
+        enum:
+          - ascending
+          - descending
+        default: ascending
