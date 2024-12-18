@@ -7,10 +7,11 @@ import org.junit.jupiter.api.Test
 class CurrencyToCountriesMapperTest {
 
     private val currencyToCountriesMapper = CurrencyToCountriesMapper()
-    private val countryCurrencyMap = mapOf(Pair(NORWAY, NOK), Pair(FINLAND, EUR), Pair(FRANCE, EUR))
 
     @Test
     fun testMapCurrenciesToCountries() {
+        // given
+        val countryCurrencyMap = mapOf(Pair(NORWAY, NOK), Pair(FINLAND, EUR), Pair(FRANCE, EUR))
         // when
         val currenciesWithCountries = currencyToCountriesMapper.currenciesWithCountries(countryCurrencyMap)
         // then

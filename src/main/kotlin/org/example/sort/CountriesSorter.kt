@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 class CountriesSorter {
 
-    fun sortCountries(countries: Map<String, String>, sortBy: SortBy, order: OrderBy): Map<String, String> {
+    fun sort(countries: Map<String, String>, sortBy: SortBy, order: OrderBy): Map<String, String> {
         val sortByMethod = when (sortBy) {
             SortBy.COUNTRY -> Pair<String, String>::first
             SortBy.CURRENCY -> Pair<String, String>::second

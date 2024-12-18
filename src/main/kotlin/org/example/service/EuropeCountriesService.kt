@@ -17,8 +17,8 @@ class EuropeCountriesService(
 
     fun getEuropeanCountriesWithCurrencies(sortBy: SortBy, orderBy: OrderBy): Map<String, String> {
         val countries = client.getCountriesInEurope()
-        val countriesWithCurrencies = restCountriesMapper.getCountriesWithCurrencies(countries)
-        return countriesSorter.sortCountries(countriesWithCurrencies, sortBy, orderBy)
+        val countriesWithCurrencies = restCountriesMapper.mapCountriesToCurrencies(countries)
+        return countriesSorter.sort(countriesWithCurrencies, sortBy, orderBy)
     }
 
 }

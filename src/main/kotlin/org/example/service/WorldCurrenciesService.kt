@@ -15,7 +15,7 @@ class WorldCurrenciesService(
 
     fun getWorldCurrenciesWithCountriesUsed(): Map<String, List<String>> {
         val countriesInWorld = client.getCountriesInWorld()
-        val countriesWithCurrencies = restCountriesMapper.getCountriesWithCurrencies(countriesInWorld)
+        val countriesWithCurrencies = restCountriesMapper.mapCountriesToCurrencies(countriesInWorld)
         return currencyToCountriesMapper.currenciesWithCountries(countriesWithCurrencies)
     }
 

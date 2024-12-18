@@ -13,11 +13,11 @@ class RestCountriesMapperTest {
     private val restCountriesMapper = RestCountriesMapper()
 
     @Test
-    fun tesGetCountriesWithCurrencies() {
+    fun tesMapCountriesToCurrencies() {
         // given
         val clientResponse = readSampleResponse()
         // when
-        val countriesWithCurrencies = restCountriesMapper.getCountriesWithCurrencies(clientResponse)
+        val countriesWithCurrencies = restCountriesMapper.mapCountriesToCurrencies(clientResponse)
         // then
         assertContainsCountryAndCurrency(countriesWithCurrencies, "Norway", "NOK")
         assertContainsCountryAndCurrency(countriesWithCurrencies, "Greece", "EUR")
@@ -25,7 +25,7 @@ class RestCountriesMapperTest {
     }
 
     @Test
-    fun countryWithNoCurrencyExcludedWhenMapping() {
+    fun `GIVEN country without currency THEN excludes country WHEN mapping`() {
         // given
         val noCurrencyCountry = "NoCurrencyCountry"
         val noCurrencyCountryObject = jacksonObjectMapper().createObjectNode()
@@ -34,7 +34,7 @@ class RestCountriesMapperTest {
         noCurrencyCountryObject.set("currencies", jacksonObjectMapper().createObjectNode()) as ObjectNode
         val countries = jacksonObjectMapper().createArrayNode().add(noCurrencyCountryObject)
         // when
-        val result = restCountriesMapper.getCountriesWithCurrencies(countries)
+        val result = restCountriesMapper.mapCountriesToCurrencies(countries)
         // then
         Assertions.assertFalse(result.containsKey(noCurrencyCountry))
     }

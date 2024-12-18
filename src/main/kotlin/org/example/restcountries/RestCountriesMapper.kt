@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component
 @Component
 class RestCountriesMapper {
 
-    fun getCountriesWithCurrencies(countries: ArrayNode): Map<String, String> {
-        return countries
+    fun mapCountriesToCurrencies(restCountriesResponse: ArrayNode): Map<String, String> {
+        return restCountriesResponse
             .filter { it.get("name")?.get("common") != null }
             .filter { it.get("currencies")?.properties()?.isEmpty() == false }
             .associate { Pair(
