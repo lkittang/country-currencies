@@ -1,9 +1,8 @@
-package kotlin.org.example.sort
+package org.example.sort
 
 import com.example.api.model.OrderBy
 import com.example.api.model.SortBy
 import org.example.*
-import org.example.sort.CountriesSorter
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 

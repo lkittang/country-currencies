@@ -3,7 +3,7 @@ info:
   title: 'Country-Currencies'
   version: '1.0.0'
 servers:
-  - url: https://api.server.test/v1
+  - url: http://localhost:8081/v1
 paths:
   /countries/europe:
     get:
@@ -12,20 +12,26 @@ paths:
         - $ref: '#/components/parameters/orderBy'
       responses:
         '200':
-          $ref: '#/components/responses/general'
+          $ref: '#/components/responses/countriesResponse'
   /currencies/world:
     get:
       responses:
         '200':
-          $ref: '#/components/responses/general'
+          $ref: '#/components/responses/currenciesResponse'
 components:
   responses:
-    general:
+    countriesResponse:
       description: OK
       content:
         application/json:
           schema:
-            type: object
+            $ref: '#/components/schemas/countries'
+    currenciesResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/currencies'
   parameters:
     sortBy:
       name: sortBy
@@ -50,3 +56,28 @@ components:
         - ascending
         - descending
       default: ascending
+    countries:
+      type: object
+      description: Keys are country names. Values are the respective countries' currency
+      additionalProperties:
+        type: string
+      example:
+        Liechtenstein: CHF
+        Norway: NOK
+        Switzerland: CHF
+    currencies:
+      type: object
+      description: Keys are currencies. Values are lists of country names wherein the currency is used
+      additionalProperties:
+        type: array
+        description:
+          List of countries using the same currency
+        items:
+          type: string
+          description: Country name
+      example:
+        CHF:
+          - Liechtenstein
+          - Switzerland
+        NOK:
+          - Norway

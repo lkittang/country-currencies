@@ -15,11 +15,11 @@ open class Controller(
     @Autowired private val worldCurrenciesService: WorldCurrenciesService
 ): DefaultApi {
 
-    override fun countriesEuropeGet(sortBy: SortBy, orderBy: OrderBy): ResponseEntity<Any> {
+    override fun countriesEuropeGet(sortBy: SortBy, orderBy: OrderBy): ResponseEntity<Map<String,String>> {
         return ResponseEntity.ok(europeCountriesService.getEuropeanCountriesWithCurrencies(sortBy, orderBy))
     }
 
-    override fun currenciesWorldGet(): ResponseEntity<Any> {
+    override fun currenciesWorldGet(): ResponseEntity<Map<String, List<String>>> {
         return ResponseEntity.ok(worldCurrenciesService.getWorldCurrenciesWithCountriesUsed())
     }
 }

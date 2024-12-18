@@ -1,7 +1,6 @@
-package kotlin.org.example.currency
+package org.example.currency
 
 import org.example.*
-import org.example.currency.CurrencyToCountriesMapper
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 

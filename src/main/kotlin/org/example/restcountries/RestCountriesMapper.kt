@@ -6,12 +6,13 @@ import org.springframework.stereotype.Component
 @Component
 class RestCountriesMapper {
 
-    fun getCountriesWithCurrencies(countries: ArrayNode): Map<String, String?> {
+    fun getCountriesWithCurrencies(countries: ArrayNode): Map<String, String> {
         return countries
             .filter { it.get("name")?.get("common") != null }
+            .filter { it.get("currencies")?.properties()?.isEmpty() == false }
             .associate { Pair(
                 it.get("name").get("common").asText(),
-                it.get("currencies")?.properties()?.let { if (it.isEmpty()) null else it.first()?.key }) }
+                it.get("currencies").properties().first().key) }
     }
 
 }
